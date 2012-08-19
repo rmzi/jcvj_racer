@@ -3,13 +3,13 @@ desc 'recreate sprite sheets'
 task 'resprite' do
   require 'sprite_factory'
 
-  SpriteFactory.run!('images/sprites', :layout => :packed, :output_style => 'images/sprites.js', :margin => 5, :nocomments => true) do |images|
+  SpriteFactory.run!('images/sprites', :layout => :packed, :output_style => 'images/spritesss.js', :margin => 5, :nocomments => true) do |images|
     SpriteHelper.javascript_style("SPRITES", images)
   end
 
-  SpriteFactory.run!('images/background', :layout => :vertical, :output_style => 'images/background.js', :margin => 5, :nocomments => true) do |images|
-    SpriteHelper.javascript_style("BACKGROUND", images)
-  end
+  #SpriteFactory.run!('images/background', :layout => :vertical, :output_style => 'images/background.js', :margin => 5, :nocomments => true) do |images|
+  #  SpriteHelper.javascript_style("BACKGROUND", images)
+  #end
 
 end
 

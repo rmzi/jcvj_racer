@@ -171,6 +171,7 @@ var Game = {  // a modified version of the game loop from my previous boulderdas
     };
     Dom.on(document, 'keydown', function(ev) { onkey(ev.keyCode, 'down'); } );
     Dom.on(document, 'keyup',   function(ev) { onkey(ev.keyCode, 'up');   } );
+    // INset 
   },
 
   //---------------------------------------------------------------------------
@@ -313,11 +314,11 @@ var Render = {
     var bounce = (1.5 * Math.random() * speedPercent * resolution) * Util.randomChoice([-1,1]);
     var sprite;
     if (steer < 0)
-      sprite = (updown > 0) ? SPRITES.PLAYER_UPHILL_LEFT : SPRITES.PLAYER_LEFT;
+      sprite = (updown > 0) ? SPRITES.VANDAMME01_BIKE_UPHILL_RIGHT : SPRITES.VANDAMME01_BIKE_RIGHT;
     else if (steer > 0)
-      sprite = (updown > 0) ? SPRITES.PLAYER_UPHILL_RIGHT : SPRITES.PLAYER_RIGHT;
+      sprite = (updown > 0) ? SPRITES.VANDAMME01_BIKE_UPHILL_LEFT : SPRITES.VANDAMME01_BIKE_LEFT;
     else
-      sprite = (updown > 0) ? SPRITES.PLAYER_UPHILL_STRAIGHT : SPRITES.PLAYER_STRAIGHT;
+      sprite = (updown > 0) ? SPRITES.VANDAMME01_BIKE_UPHILL_STRAIGHT : SPRITES.VANDAMME01_BIKE_STRAIGHT;
 
     Render.sprite(ctx, width, height, resolution, roadWidth, sprites, sprite, scale, destX, destY + bounce, -0.5, -1);
   },
@@ -357,8 +358,8 @@ var COLORS = {
   SKY:  '#72D7EE',
   TREE: '#005108',
   FOG:  '#005108',
-  LIGHT:  { road: '#6B6B6B', grass: '#10AA10', rumble: '#555555', lane: '#CCCCCC'  },
-  DARK:   { road: '#696969', grass: '#009A00', rumble: '#BBBBBB'                   },
+  LIGHT:  { road: '#efcbc0', grass: '#bb806e', rumble: '#555555', lane: '#efcbc0'  },
+  DARK:   { road: '#efcbc0', grass: '#bb806e', rumble: '#BBBBBB'                   },
   START:  { road: 'white',   grass: 'white',   rumble: 'white'                     },
   FINISH: { road: 'black',   grass: 'black',   rumble: 'black'                     }
 };
@@ -370,45 +371,76 @@ var BACKGROUND = {
 };
 
 var SPRITES = {
-  PALM_TREE:              { x:    5, y:    5, w:  215, h:  540 },
-  BILLBOARD08:            { x:  230, y:    5, w:  385, h:  265 },
-  TREE1:                  { x:  625, y:    5, w:  360, h:  360 },
-  DEAD_TREE1:             { x:    5, y:  555, w:  135, h:  332 },
-  BILLBOARD09:            { x:  150, y:  555, w:  328, h:  282 },
-  BOULDER3:               { x:  230, y:  280, w:  320, h:  220 },
-  COLUMN:                 { x:  995, y:    5, w:  200, h:  315 },
-  BILLBOARD01:            { x:  625, y:  375, w:  300, h:  170 },
-  BILLBOARD06:            { x:  488, y:  555, w:  298, h:  190 },
-  BILLBOARD05:            { x:    5, y:  897, w:  298, h:  190 },
-  BILLBOARD07:            { x:  313, y:  897, w:  298, h:  190 },
-  BOULDER2:               { x:  621, y:  897, w:  298, h:  140 },
-  TREE2:                  { x: 1205, y:    5, w:  282, h:  295 },
-  BILLBOARD04:            { x: 1205, y:  310, w:  268, h:  170 },
-  DEAD_TREE2:             { x: 1205, y:  490, w:  150, h:  260 },
-  BOULDER1:               { x: 1205, y:  760, w:  168, h:  248 },
-  BUSH1:                  { x:    5, y: 1097, w:  240, h:  155 },
-  CACTUS:                 { x:  929, y:  897, w:  235, h:  118 },
-  BUSH2:                  { x:  255, y: 1097, w:  232, h:  152 },
-  BILLBOARD03:            { x:    5, y: 1262, w:  230, h:  220 },
-  BILLBOARD02:            { x:  245, y: 1262, w:  215, h:  220 },
-  STUMP:                  { x:  995, y:  330, w:  195, h:  140 },
-  SEMI:                   { x: 1365, y:  490, w:  122, h:  144 },
-  TRUCK:                  { x: 1365, y:  644, w:  100, h:   78 },
-  CAR03:                  { x: 1383, y:  760, w:   88, h:   55 },
-  CAR02:                  { x: 1383, y:  825, w:   80, h:   59 },
-  CAR04:                  { x: 1383, y:  894, w:   80, h:   57 },
-  CAR01:                  { x: 1205, y: 1018, w:   80, h:   56 },
-  PLAYER_UPHILL_LEFT:     { x: 1383, y:  961, w:   80, h:   45 },
-  PLAYER_UPHILL_STRAIGHT: { x: 1295, y: 1018, w:   80, h:   45 },
-  PLAYER_UPHILL_RIGHT:    { x: 1385, y: 1018, w:   80, h:   45 },
-  PLAYER_LEFT:            { x:  995, y:  480, w:   80, h:   41 },
-  PLAYER_STRAIGHT:        { x: 1085, y:  480, w:   80, h:   41 },
-  PLAYER_RIGHT:           { x:  995, y:  531, w:   80, h:   41 }
+  PALM_TREE:                       { x:    5, y:    5, w:  215, h:  540 },
+  BILLBOARD05:                     { x:  230, y:    5, w:  343, h:  489 },
+  BILLBOARD03:                     { x:  583, y:    5, w:  343, h:  489 },
+  BILLBOARD04:                     { x:  936, y:    5, w:  343, h:  489 },
+  BILLBOARD02:                     { x:    5, y:  555, w:  343, h:  489 },
+  BILLBOARD06:                     { x:  358, y:  555, w:  343, h:  489 },
+  BILLBOARD07:                     { x:  711, y:  555, w:  343, h:  489 },
+  BILLBOARD01:                     { x: 1289, y:    5, w:  343, h:  489 },
+  BILLBOARD09:                     { x: 1289, y:  504, w:  343, h:  489 },
+  BILLBOARD08:                     { x:    5, y: 1054, w:  343, h:  489 },
+  TREE1:                           { x:  358, y: 1054, w:  360, h:  360 },
+  DEAD_TREE1:                      { x: 1064, y:  555, w:  135, h:  332 },
+  BOULDER3:                        { x:  728, y: 1054, w:  320, h:  220 },
+  COLUMN:                          { x: 1642, y:    5, w:  200, h:  315 },
+  BOULDER2:                        { x: 1058, y: 1054, w:  298, h:  140 },
+  TREE2:                           { x: 1852, y:    5, w:  282, h:  295 },
+  DEAD_TREE2:                      { x: 1852, y:  310, w:  150, h:  260 },
+  BOULDER1:                        { x: 1852, y:  580, w:  168, h:  248 },
+  BUSH1:                           { x: 1852, y:  838, w:  240, h:  155 },
+  CACTUS:                          { x: 1852, y: 1003, w:  235, h:  118 },
+  BUSH2:                           { x: 1852, y: 1131, w:  232, h:  152 },
+  STUMP:                           { x: 1852, y: 1293, w:  195, h:  140 },
+  SEMI:                            { x: 2012, y:  310, w:  122, h:  144 },
+  VANDAMME01_BIKE_LEFT:            { x: 2030, y:  580, w:   52, h:  118 },
+  VANDAMME01_BIKE_STRAIGHT:        { x: 2030, y:  708, w:   52, h:  118 },
+  VANDAMME01_BIKE_RIGHT:           { x: 2057, y: 1293, w:   52, h:  118 },
+  VANDAMME01_BIKE_UPHILL_RIGHT:    { x: 1642, y:  330, w:   51, h:  118 },
+  VANDAMME01_BIKE_UPHILL_LEFT:     { x: 1703, y:  330, w:   51, h:  118 },
+  VANDAMME01_BIKE_UPHILL_STRAIGHT: { x: 1764, y:  330, w:   51, h:  118 },
+  VANDAMME04:                      { x: 1642, y:  458, w:  116, h:  107 },
+  VANDAMME03:                      { x: 1642, y:  575, w:  116, h:  107 },
+  TRUCK:                           { x: 2012, y:  464, w:  100, h:   78 },
+  CAR01:                           { x: 1852, y: 1443, w:   65, h:   99 },
+  VANDAMME_BIKE_LEFT:              { x: 1927, y: 1443, w:   64, h:   99 },
+  VANDAMME_BIKE_UPHILL_STRAIGHT:   { x: 2001, y: 1443, w:   64, h:   99 },
+  VANDAMME_BIKE_STRAIGHT:          { x: 1768, y:  458, w:   64, h:   99 },
+  VANDAMME_BIKE_UPHILL_RIGHT:      { x: 1768, y:  575, w:   64, h:   99 },
+  VANDAMME_BIKE_RIGHT:             { x: 1642, y:  692, w:   64, h:   99 },
+  VANDAMME_BIKE_UPHILL_LEFT:       { x: 1716, y:  692, w:   64, h:   99 },
+  HORSE02:                         { x: 1642, y:  801, w:   70, h:   95 },
+  CAR03:                           { x: 1722, y:  801, w:   88, h:   55 },
+  HORSE01:                         { x: 1642, y:  906, w:   63, h:   83 },
+  CAR02:                           { x: 1715, y:  906, w:   80, h:   59 },
+  CAR04:                           { x: 1642, y:  999, w:   80, h:   57 },
+  CAR05:                           { x: 1732, y:  999, w:   80, h:   56 },
+  PLAYER_UPHILL_STRAIGHT:          { x: 1642, y: 1066, w:   80, h:   45 },
+  PLAYER_UPHILL_LEFT:              { x: 1732, y: 1066, w:   80, h:   45 },
+  PLAYER_UPHILL_RIGHT:             { x: 1642, y: 1121, w:   80, h:   45 },
+  PLAYER_LEFT:                     { x: 1732, y: 1121, w:   80, h:   41 },
+  PLAYER_STRAIGHT:                 { x: 1642, y: 1176, w:   80, h:   41 },
+  PLAYER_RIGHT:                    { x: 1732, y: 1176, w:   80, h:   41 },
+  COP:                             { x: 1642, y: 1227, w:   60, h:   51 },
+  JCVD_BIKE_LEFT:                  { x: 2092, y:  580, w:   29, h:   48 },
+  JCVD_BIKE_RIGHT:                 { x: 2092, y:  638, w:   29, h:   48 },
+  JCVD_UPHILL_RIGHT:               { x: 2092, y:  708, w:   27, h:   48 },
+  JCVD_UPHILL_LEFT:                { x: 2092, y:  766, w:   27, h:   48 },
+  JCVD_UPHILL_STRAIGHT:            { x: 2102, y:  838, w:   24, h:   47 },
+  JCVD_BIKE_STRAIGHT:              { x: 2102, y:  895, w:   24, h:   47 },
+  PLAYER_BIKE_UPHILL_RIGHT:        { x: 2102, y:  952, w:   24, h:   37 },
+  PLAYER_BIKE_UPHILL_LEFT:         { x: 2097, y: 1003, w:   24, h:   37 },
+  PLAYER_BIKE_UPHILL_STRAIGHT:     { x: 2097, y: 1050, w:   23, h:   37 },
+  PLAYER_BIKE_LEFT:                { x: 2094, y: 1131, w:   25, h:   36 },
+  PLAYER_BIKE_RIGHT:               { x: 2094, y: 1177, w:   24, h:   36 },
+  PLAYER_BIKE_STRAIGHT:            { x: 2094, y: 1223, w:   23, h:   35 }
 };
+
 
 SPRITES.SCALE = 0.3 * (1/SPRITES.PLAYER_STRAIGHT.w) // the reference sprite width should be 1/3rd the (half-)roadWidth
 
 SPRITES.BILLBOARDS = [SPRITES.BILLBOARD01, SPRITES.BILLBOARD02, SPRITES.BILLBOARD03, SPRITES.BILLBOARD04, SPRITES.BILLBOARD05, SPRITES.BILLBOARD06, SPRITES.BILLBOARD07, SPRITES.BILLBOARD08, SPRITES.BILLBOARD09];
 SPRITES.PLANTS     = [SPRITES.TREE1, SPRITES.TREE2, SPRITES.DEAD_TREE1, SPRITES.DEAD_TREE2, SPRITES.PALM_TREE, SPRITES.BUSH1, SPRITES.BUSH2, SPRITES.CACTUS, SPRITES.STUMP, SPRITES.BOULDER1, SPRITES.BOULDER2, SPRITES.BOULDER3];
-SPRITES.CARS       = [SPRITES.CAR01, SPRITES.CAR02, SPRITES.CAR03, SPRITES.CAR04, SPRITES.SEMI, SPRITES.TRUCK];
-
+//SPRITES.CARS       = [SPRITES.CAR01, SPRITES.CAR02, SPRITES.CAR03, SPRITES.CAR04, SPRITES.SEMI, SPRITES.TRUCK];
+SPRITES.CARS       = [SPRITES.CAR01, SPRITES.HORSE01, SPRITES.HORSE01, SPRITES.COP];
